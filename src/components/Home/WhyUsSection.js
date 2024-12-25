@@ -1,57 +1,47 @@
-import React, { useState, useEffect } from "react";
-import { motion, useMotionValue } from "framer-motion";
+import React, { useEffect, useRef } from "react";
+import { gsap } from "gsap";
 import backgroundImage from "../../assets/image/farmer.jpeg"; // Replace with the path to your background image
 
 const WhyUsSection = () => {
-  const [showCursor, setShowCursor] = useState(false);
-  const cursorX = useMotionValue(-100);
-  const cursorY = useMotionValue(-100);
-
-  const handleMouseMove = (e) => {
-    cursorX.set(e.clientX - 32); // Adjust the offset to center the cursor
-    cursorY.set(e.clientY - 32);
-  };
+  const maskRef = useRef(null);
 
   useEffect(() => {
-    if (showCursor) {
-      window.addEventListener("mousemove", handleMouseMove);
-    } else {
-      window.removeEventListener("mousemove", handleMouseMove);
-    }
-    return () => {
-      window.removeEventListener("mousemove", handleMouseMove);
+    const updateMaskPosition = (e) => {
+      const x = e.clientX;
+      const y = e.clientY;
+
+      gsap.to(maskRef.current, {
+        x: x - 100, // Adjust offset to center the mask
+        y: y - 100,
+        duration: 0.2,
+        ease: "power2.out",
+      });
     };
-  }, [showCursor]);
+
+    window.addEventListener("mousemove", updateMaskPosition);
+
+    return () => {
+      window.removeEventListener("mousemove", updateMaskPosition);
+    };
+  }, []);
 
   return (
     <section
-      className="relative h-screen w-full text-center flex flex-col justify-center items-center text-white"
+      className="relative h-screen w-full text-center flex flex-col justify-center items-center text-white overflow-hidden"
       style={{
         backgroundImage: `url(${backgroundImage})`,
         backgroundSize: "cover",
         backgroundPosition: "center",
       }}
-      onMouseEnter={() => setShowCursor(true)}
-      onMouseLeave={() => setShowCursor(false)}
     >
       {/* Black Overlay */}
       <div className="absolute inset-0 bg-black bg-opacity-60"></div>
 
-      {/* Custom Circular Cursor */}
-      {showCursor && (
-        <motion.div
-          className="fixed w-16 h-16 bg-yellow-300 text-black flex items-center justify-center rounded-full pointer-events-none z-50"
-          style={{
-            translateX: cursorX,
-            translateY: cursorY,
-          }}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.5 }}
-        >
-          WHY US?
-        </motion.div>
-      )}
+      {/* GSAP Mask */}
+      <div
+        ref={maskRef}
+        className="absolute w-60 h-60 rounded-full bg-white mix-blend-difference  pointer-events-none z-50"
+      ></div>
 
       {/* Content */}
       <div className="relative z-10">

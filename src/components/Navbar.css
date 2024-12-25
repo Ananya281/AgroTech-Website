@@ -1,0 +1,23 @@
+/* Liquid text animation */
+.liquid-text {
+  font-size: 24px;
+  font-weight: bold;
+  background: linear-gradient(270deg, #ff7f50, #ff6347, #f0e68c, #32cd32);
+  background-size: 400% 400%;
+  color: transparent;
+  -webkit-background-clip: text;
+  background-clip: text;
+  animation: liquidFlow 4s ease infinite;
+}
+
+@keyframes liquidFlow {
+  0% {
+    background-position: 400% 0;
+  }
+  50% {
+    background-position: 0 100%;
+  }
+  100% {
+    background-position: 400% 0;
+  }
+}

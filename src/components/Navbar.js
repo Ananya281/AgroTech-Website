@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isOpen, setIsOpen] = useState(false); // Define isOpen and setIsOpen for mobile menu toggle
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -12,6 +13,24 @@ const Navbar = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const menuVariants = {
+    hidden: { opacity: 0, x: "-100%" },
+    visible: { opacity: 1, x: "0%", transition: { duration: 0.5, ease: "easeInOut" } },
+    exit: { opacity: 0, x: "-100%", transition: { duration: 0.5, ease: "easeInOut" } },
+  };
+
+  const listItemVariants = {
+    hidden: { opacity: 0, x: "-50%" },
+    visible: (i) => ({
+      opacity: 1,
+      x: "0%",
+      transition: { delay: i * 0.2, duration: 0.5, ease: "easeOut" },
+    }),
+    exit: { opacity: 0, x: "-50%", transition: { duration: 0.3 } },
+  };
+
+  const menuItems = ["Home", "About", "Products", "Services", "Research", "Get Involved", "Contact"];
 
   return (
     <header
@@ -28,30 +47,20 @@ const Navbar = () => {
 
         {/* Desktop Links */}
         <nav className="hidden md:flex space-x-8">
-          <Link to="/" className="hover:text-yellow-300 text-gray-100">
-            Home
-          </Link>
-          <Link to="/about" className="hover:text-yellow-300 text-gray-100">
-            About
-          </Link>
-          <Link to="/products" className="hover:text-yellow-300 text-gray-100">
-            Products
-          </Link>
-          <Link to="/services" className="hover:text-yellow-300 text-gray-100">
-            Services
-          </Link>
-          <Link to="/research" className="hover:text-yellow-300 text-gray-100">
-            Research
-          </Link>
-          <Link
-            to="/get-involved"
-            className="hover:text-yellow-300 text-gray-100"
-          >
-            Get Involved
-          </Link>
-          <Link to="/contact" className="hover:text-yellow-300 text-gray-100">
-            Contact
-          </Link>
+          {menuItems.map((item) => (
+            <motion.div
+              key={item}
+              whileHover={{ scale: 1.1, y: -2 }}
+              whileTap={{ scale: 0.9 }}
+            >
+              <Link
+                to={`/${item.toLowerCase().replace(/\s+/g, "-")}`}
+                className="hover:text-yellow-300 text-gray-100"
+              >
+                {item}
+              </Link>
+            </motion.div>
+          ))}
         </nav>
 
         {/* Mobile Menu Button */}
@@ -64,67 +73,44 @@ const Navbar = () => {
       </div>
 
       {/* Full-Screen Mobile Menu */}
-      {isOpen && (
-        <div className="fixed inset-0 bg-green-900 text-gray-100 flex flex-col items-center justify-center z-50">
-          <button
-            className="absolute top-4 right-6 text-2xl font-bold text-yellow-300"
-            onClick={() => setIsOpen(false)}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            className="fixed inset-0 bg-green-900 text-gray-100 flex flex-col items-center justify-center z-50"
+            variants={menuVariants}
+            initial="hidden"
+            animate="visible"
+            exit="exit"
           >
-            CLOSE
-          </button>
-          <nav className="flex flex-col items-center space-y-6 text-2xl">
-            <Link
-              to="/"
-              className="hover:text-yellow-300"
+            <button
+              className="absolute top-4 right-6 text-2xl font-bold text-yellow-300"
               onClick={() => setIsOpen(false)}
             >
-              Home
-            </Link>
-            <Link
-              to="/about"
-              className="hover:text-yellow-300"
-              onClick={() => setIsOpen(false)}
-            >
-              About
-            </Link>
-            <Link
-              to="/products"
-              className="hover:text-yellow-300"
-              onClick={() => setIsOpen(false)}
-            >
-              Products
-            </Link>
-            <Link
-              to="/services"
-              className="hover:text-yellow-300"
-              onClick={() => setIsOpen(false)}
-            >
-              Services
-            </Link>
-            <Link
-              to="/research"
-              className="hover:text-yellow-300"
-              onClick={() => setIsOpen(false)}
-            >
-              Research
-            </Link>
-            <Link
-              to="/get-involved"
-              className="hover:text-yellow-300"
-              onClick={() => setIsOpen(false)}
-            >
-              Get Involved
-            </Link>
-            <Link
-              to="/contact"
-              className="hover:text-yellow-300"
-              onClick={() => setIsOpen(false)}
-            >
-              Contact
-            </Link>
-          </nav>
-        </div>
-      )}
+              CLOSE
+            </button>
+            <nav className="flex flex-col items-center space-y-6 text-2xl">
+              {menuItems.map((item, i) => (
+                <motion.div
+                  key={item}
+                  custom={i} // Custom index for staggered animations
+                  variants={listItemVariants}
+                  initial="hidden"
+                  animate="visible"
+                  exit="exit"
+                >
+                  <Link
+                    to={`/${item.toLowerCase().replace(/\s+/g, "-")}`}
+                    className="hover:text-yellow-300"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    {item}
+                  </Link>
+                </motion.div>
+              ))}
+            </nav>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </header>
   );
 };
