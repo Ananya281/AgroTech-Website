@@ -1,62 +1,54 @@
 import React from "react";
-import { Parallax } from "react-scroll-parallax";
 import productImage1 from "../../assets/image/d.jpeg";
 import productImage2 from "../../assets/image/e.jpeg";
 
 const ProductCards = () => {
   return (
-    <div className="py-20 bg-gray-100 mt-10">
+    <div className="py-20 bg-gray-100">
       {/* Section Title */}
-      <Parallax speed={-10}>
-        <h2 className="text-7xl font-bold text-gray-800 text-center mb-10">
-          Our Featured Products
-        </h2>
-      </Parallax>
+      <h2 className="text-5xl font-bold text-gray-800 text-center mb-16">
+        Our Featured Products
+      </h2>
 
       {/* Product Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-12 px-6 lg:px-20">
+      <div className="flex justify-center gap-8 px-4">
         {/* Product 1 */}
-        <Parallax speed={5}>
-          <div className="max-w-lg mx-auto bg-white rounded-2xl shadow-xl overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
+        <div className="flex-1 max-w-xl bg-white rounded-lg overflow-hidden transform transition-transform duration-300 group">
+          <div className="relative">
             <img
               src={productImage1}
               alt="Product 1"
-              className="w-full h-72 object-cover"
+              className="w-full h-[400px] object-cover"
             />
-            <div className="p-8">
-              <h3 className="text-3xl font-semibold text-gray-800">
-                Guava Probi
-              </h3>
-              <p className="mt-4 text-lg text-gray-600 leading-relaxed">
-                Guava Probi is made from freshly pureed guava fermented with
-                probiotics, providing preserved functional properties for
-                immunity and wellness.
-              </p>
-            </div>
+            <h3 className="absolute bottom-4 left-4 text-2xl font-semibold text-white bg-black bg-opacity-50 px-4 py-1 rounded group-hover:hidden transition-all duration-300">
+              Guava Probi
+            </h3>
+            <p className="absolute inset-0 flex items-center justify-center text-lg text-white bg-black bg-opacity-80 px-4 py-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
+              Guava Probi is made from freshly pureed guava fermented with
+              probiotics, providing preserved functional properties for immunity
+              and wellness.
+            </p>
           </div>
-        </Parallax>
+        </div>
 
         {/* Product 2 */}
-        <Parallax speed={10}>
-          <div className="max-w-lg mx-auto bg-white rounded-2xl shadow-xl overflow-hidden transform transition-transform duration-300 hover:scale-105 hover:shadow-2xl">
+        <div className="flex-1 max-w-xl bg-white rounded-lg overflow-hidden transform transition-transform duration-300 group">
+          <div className="relative">
             <img
               src={productImage2}
               alt="Product 2"
-              className="w-full h-72 object-cover"
+              className="w-full h-[400px] object-cover"
             />
-            <div className="p-8">
-              <h3 className="text-3xl font-semibold text-gray-800">Iris</h3>
-              <p className="mt-4 text-lg text-gray-600 leading-relaxed">
-                Iris leverages technology for precision agriculture, enabling
-                enhanced productivity and better crop health management.
-              </p>
-            </div>
+            <h3 className="absolute bottom-4 left-4 text-2xl font-semibold text-white bg-black bg-opacity-50 px-4 py-1 rounded group-hover:hidden transition-all duration-300">
+              Iris
+            </h3>
+            <p className="absolute inset-0 flex items-center justify-center text-lg text-white bg-black bg-opacity-80 px-4 py-4 opacity-0 group-hover:opacity-100 transition-all duration-300">
+              Iris leverages technology for precision agriculture, enabling
+              enhanced productivity and better crop health management.
+            </p>
           </div>
-        </Parallax>
+        </div>
       </div>
-
-      {/* Additional Spacing */}
-      <div className="mt-16"></div>
     </div>
   );
 };

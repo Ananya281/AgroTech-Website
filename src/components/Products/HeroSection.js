@@ -4,8 +4,8 @@ import heroImage from "../../assets/image/farmer.jpeg"; // Adjust the path as pe
 
 const HeroSection = ({ title = "Welcome to Our Products" }) => {
   return (
-    <div className="relative h-screen overflow-hidden">
-      <Parallax speed={-20}>
+    <div className="relative h-screen overflow-hidden bg-cover bg-center">
+      <Parallax speed={-35}>
         <div
           className="h-full bg-cover bg-center relative"
           style={{

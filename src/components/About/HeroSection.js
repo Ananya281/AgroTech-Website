@@ -61,11 +61,11 @@ const HeroSection = () => {
 
       {/* Custom Glowing Cursor */}
       <div
-        className="fixed w-2 h-2 bg-white rounded-full pointer-events-none z-49"
+        className="fixed w-0.1 h-0.1 bg-white rounded-full pointer-events-none z-49"
         style={{
           left: cursorStyle.left,
           top: cursorStyle.top,
-          boxShadow: "0 0 80px 80px rgba(255, 255, 255, 0.6)",
+          boxShadow: "0 0 120px 120px rgba(255, 255, 255, 0.6)",
           transform: "translate(-50%, -50%)",
         }}
       ></div>

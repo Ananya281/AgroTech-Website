@@ -57,9 +57,9 @@ const VarietySection = () => {
   ];
 
   return (
-    <section className="py-20 bg-gray-100 relative">
+    <section className="py-20 bg-gray-100 relative overflow-hidden mb-0">
       {/* Parallax Background */}
-      <Parallax speed={-10}>
+      <Parallax speed={20}>
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{

@@ -4,9 +4,9 @@ import irisImage from "../../assets/image/c.jpeg"; // Ensure this path is correc
 
 const IrisSection = () => {
   return (
-    <section className="relative">
+    <section className="relative overflow-hidden mt-0">
       {/* Parallax Background */}
-      <Parallax speed={-10}>
+      <Parallax speed={0}>
         <div
           className="absolute inset-0 bg-cover bg-center"
           style={{

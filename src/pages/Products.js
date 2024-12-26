@@ -16,12 +16,12 @@ const Products = () => {
       <HeroSection title="Welcome to Our Products"/>
       <ProductCards />
       <GuavaProbiSection />
-      <BenefitsSection />
+      {/* <BenefitsSection /> */}
       <VarietySection />
       <IrisSection />
       {/* <WhyIrisSection /> */}
       {/* <WholesaleSection /> */}
-      <RetailerSection />
+      {/* <RetailerSection /> */}
       {/* <ConsumerSection />  */}
     </div>
   );

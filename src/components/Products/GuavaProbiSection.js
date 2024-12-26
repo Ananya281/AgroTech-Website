@@ -11,10 +11,10 @@ const GuavaProbiSection = () => {
   return (
     <div>
       {/* Parallax Background */}
-      <div className="relative">
+      <div className="relative overflow-hidden">
         <Parallax speed={-15}>
           <div
-            className="h-[70vh] w-full bg-cover bg-center"
+            className="h-[70vh] w-full bg-cover bg-center overflow-hidden"
             style={{
               backgroundImage: `url(${guavaImage})`,
             }}
@@ -36,7 +36,7 @@ const GuavaProbiSection = () => {
       </div>
 
       {/* Informational Section */}
-      <div className="relative py-20 bg-gray-100 text-gray-800">
+      <div className="relative py-20 bg-gray-100 text-gray-800 overflow-hidden">
         <h3 className="text-4xl font-extrabold mb-8 text-center">Why Choose Guava Probi?</h3>
         <p className="text-lg max-w-4xl mx-auto mb-12 text-center leading-relaxed">
           With the natural benefits of whole guava, this drink promotes a gut-healthy microbiome,
