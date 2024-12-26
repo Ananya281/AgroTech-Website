@@ -1,0 +1,35 @@
+.container {
+    height: 300vh; /* Makes the section scrollable */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+  }
+  
+  .image-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Creates a 3-column layout */
+    gap: 20px; /* Adds space between grid items */
+    width: 80%;
+    margin: 0 auto;
+  }
+  
+  .grid-item {
+    overflow: hidden;
+    border-radius: 10px;
+    position: relative;
+    aspect-ratio: 1; /* Ensures square grid items */
+    transform-origin: center; /* Centered scaling */
+  }
+  
+  .image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease; /* Smooth hover effect */
+  }
+  
+  .grid-item:hover .image {
+    transform: scale(1.1); /* Slight zoom-in on hover */
+  }
+  

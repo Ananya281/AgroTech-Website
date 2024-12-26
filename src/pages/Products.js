@@ -13,16 +13,16 @@ import ConsumerSection from "../components/Products/ConsumerSection";
 const Products = () => {
   return (
     <div>
-      <HeroSection />
+      <HeroSection title="Welcome to Our Products"/>
       <ProductCards />
       <GuavaProbiSection />
       <BenefitsSection />
       <VarietySection />
       <IrisSection />
-      <WhyIrisSection />
-      <WholesaleSection />
+      {/* <WhyIrisSection /> */}
+      {/* <WholesaleSection /> */}
       <RetailerSection />
-      <ConsumerSection />
+      {/* <ConsumerSection />  */}
     </div>
   );
 };

@@ -1,0 +1,14 @@
+section {
+    overflow: hidden; /* Prevents overflow content */
+  }
+  
+  video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the video fills the entire section */
+  }
+  
+  button {
+    transition: all 0.3s ease; /* Smooth transition for hover effects */
+  }
+  

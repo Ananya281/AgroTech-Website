@@ -1,13 +1,30 @@
 import React from "react";
+import { Parallax } from "react-scroll-parallax";
+import heroImage from "../../assets/image/farmer.jpeg"; // Adjust the path as per your folder structure
 
-const HeroSection = () => {
+const HeroSection = ({ title = "Welcome to Our Products" }) => {
   return (
-    <header
-      className="h-screen bg-cover bg-center flex items-center justify-center text-white"
-      style={{ backgroundImage: "url('path-to-hero-background.jpg')" }}
-    >
-      <h1 className="text-5xl font-bold">PRODUCTS</h1>
-    </header>
+    <div className="relative h-screen overflow-hidden">
+      <Parallax speed={-20}>
+        <div
+          className="h-full bg-cover bg-center relative"
+          style={{
+    backgroundImage: `url(${heroImage})`,
+    backgroundSize: "cover",
+    backgroundPosition: "center",
+    height: "100vh",
+  }}
+        >
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+
+          {/* Title Text */}
+          <h1 className="absolute inset-0 flex items-center justify-center text-white text-4xl md:text-6xl font-bold drop-shadow-lg">
+            {title}
+          </h1>
+        </div>
+      </Parallax>
+    </div>
   );
 };
 

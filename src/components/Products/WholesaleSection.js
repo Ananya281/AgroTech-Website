@@ -1,18 +1,19 @@
 import React from "react";
+import { Parallax } from "react-scroll-parallax";
 
 const WholesaleSection = () => {
   return (
-    <section className="py-16 bg-gray-50 text-center">
-      <h2 className="text-3xl font-bold mb-6">For Wholesale Distributors</h2>
-      <p className="max-w-4xl mx-auto text-gray-600">
-        IRIS sensors provide distributors with real-time visibility into the condition of fruits during transit, ensuring quality.
-      </p>
-      <img
-        src="path-to-wholesale-image.jpg"
-        alt="Wholesale Distributors"
-        className="my-6 mx-auto rounded-lg shadow-md"
-      />
-    </section>
+    <div style={{ padding: "50px", textAlign: "center", backgroundColor: "#e9ecef" }}>
+      <Parallax speed={5}>
+        <h2>Wholesale Opportunities</h2>
+      </Parallax>
+      <Parallax speed={10}>
+        <p>
+          Partner with us to bring our quality products to your customers. 
+          We offer excellent wholesale pricing and support.
+        </p>
+      </Parallax>
+    </div>
   );
 };
 

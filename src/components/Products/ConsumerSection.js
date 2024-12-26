@@ -1,15 +1,42 @@
 import React from "react";
+import { Parallax } from "react-scroll-parallax";
+import consumerImage from "../../assets/image/a.jpeg";
 
 const ConsumerSection = () => {
   return (
-    <section className="py-16 bg-gray-100 text-center">
-      <h2 className="text-3xl font-bold mb-6">For Consumers</h2>
-      <p className="max-w-4xl mx-auto text-gray-600">
-        IRIS extends to the consumer level by providing a mobile app to scan fruit packaging for real-time ripeness data.
-      </p>
-      <p className="mt-4 font-bold">Say goodbye to uncertainty!</p>
-      <p>Enjoy fruits at their peak with IRIS.</p>
-    </section>
+    <div style={{ position: "relative", height: "100vh" }}>
+      <Parallax speed={-10}>
+        <div
+          style={{
+            backgroundImage: `url(${consumerImage})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            height: "100%",
+          }}
+        >
+          <div
+            style={{
+              background: "rgba(255, 255, 255, 0.7)",
+              color: "#000",
+              height: "100%",
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              textAlign: "center",
+              padding: "0 20px",
+            }}
+          >
+            <h2>For Consumers</h2>
+            <p>
+              Experience the finest quality and innovation in every product. From daily essentials to
+              premium selections, our products cater to your unique needs and preferences. Trust us
+              to enhance your lifestyle.
+            </p>
+          </div>
+        </div>
+      </Parallax>
+    </div>
   );
 };
 

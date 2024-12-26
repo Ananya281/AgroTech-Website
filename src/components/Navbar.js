@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
+  const location = useLocation(); // Hook to detect the current route
 
   useEffect(() => {
+    // Handle scroll event for navbar styling
     const handleScroll = () => {
       setIsScrolled(window.scrollY > window.innerHeight / 3);
     };
@@ -14,6 +16,7 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Variants for mobile menu animations
   const menuVariants = {
     hidden: { opacity: 0, x: "-100%" },
     visible: { opacity: 1, x: "0%", transition: { duration: 0.5, ease: "easeInOut" } },
@@ -30,7 +33,16 @@ const Navbar = () => {
     exit: { opacity: 0, x: "-50%", transition: { duration: 0.3 } },
   };
 
-  const menuItems = ["Home", "About", "Products", "Services", "Research", "Get Involved", "Contact"];
+  // Navigation menu items
+  const menuItems = [
+    { name: "Home", path: "/" },
+    { name: "About", path: "/about" },
+    { name: "Products", path: "/products" },
+    { name: "Services", path: "/services" },
+    { name: "Research", path: "/research" },
+    { name: "Get Involved", path: "/get-involved" },
+    { name: "Contact", path: "/contact" },
+  ];
 
   return (
     <header
@@ -47,20 +59,25 @@ const Navbar = () => {
 
         {/* Desktop Links */}
         <nav className="hidden md:flex space-x-8">
-          {menuItems.map((item) => (
-            <motion.div
-              key={item}
-              whileHover={{ scale: 1.1, y: -2 }}
-              whileTap={{ scale: 0.9 }}
-            >
-              <Link
-                to={`/${item.toLowerCase().replace(/\s+/g, "-")}`}
-                className="hover:text-yellow-300 text-gray-100"
+          {menuItems.map((item) => {
+            const isActive = location.pathname === item.path; // Check if the current route matches
+            return (
+              <motion.div
+                key={item.name}
+                whileHover={{ scale: 1.1, y: -2 }}
+                whileTap={{ scale: 0.9 }}
               >
-                {item}
-              </Link>
-            </motion.div>
-          ))}
+                <Link
+                  to={item.path}
+                  className={`${
+                    isActive ? "text-yellow-300" : "text-gray-100"
+                  } hover:text-yellow-300`}
+                >
+                  {item.name}
+                </Link>
+              </motion.div>
+            );
+          })}
         </nav>
 
         {/* Mobile Menu Button */}
@@ -91,7 +108,7 @@ const Navbar = () => {
             <nav className="flex flex-col items-center space-y-6 text-2xl">
               {menuItems.map((item, i) => (
                 <motion.div
-                  key={item}
+                  key={item.name}
                   custom={i} // Custom index for staggered animations
                   variants={listItemVariants}
                   initial="hidden"
@@ -99,11 +116,11 @@ const Navbar = () => {
                   exit="exit"
                 >
                   <Link
-                    to={`/${item.toLowerCase().replace(/\s+/g, "-")}`}
+                    to={item.path}
                     className="hover:text-yellow-300"
-                    onClick={() => setIsOpen(false)}
+                    onClick={() => setIsOpen(false)} // Close menu after clicking
                   >
-                    {item}
+                    {item.name}
                   </Link>
                 </motion.div>
               ))}
