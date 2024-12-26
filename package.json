@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@react-spring/parallax": "^9.7.5",
+    "@react-three/drei": "^9.120.4",
+    "@react-three/fiber": "^8.17.10",
     "aos": "^2.3.4",
     "cra-template": "1.2.0",
     "css-loader": "^7.1.2",
