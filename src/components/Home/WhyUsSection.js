@@ -10,6 +10,7 @@ const WhyUsSection = () => {
       const x = e.clientX;
       const y = e.clientY;
 
+      // Update mask position using GSAP
       gsap.to(maskRef.current, {
         x: x - 100, // Adjust offset to center the mask
         y: y - 100,
@@ -18,9 +19,13 @@ const WhyUsSection = () => {
       });
     };
 
+    // Hide the default cursor
+    document.body.style.cursor = "none";
+
     window.addEventListener("mousemove", updateMaskPosition);
 
     return () => {
+      document.body.style.cursor = ""; // Reset cursor to default on cleanup
       window.removeEventListener("mousemove", updateMaskPosition);
     };
   }, []);
@@ -40,11 +45,15 @@ const WhyUsSection = () => {
       {/* GSAP Mask */}
       <div
         ref={maskRef}
-        className="absolute w-60 h-60 rounded-full bg-white mix-blend-difference  pointer-events-none z-50"
+        className="fixed w-60 h-60 rounded-full bg-white mix-blend-difference pointer-events-none z-50"
+        style={{
+          top: 0,
+          left: 0,
+        }}
       ></div>
 
       {/* Content */}
-      <div className="relative z-10">
+      <div className="absolute z-10">
         <h2 className="text-4xl md:text-6xl font-extrabold mb-4">
           WHY FV PLUS AGROTECH INNOVATION?
         </h2>

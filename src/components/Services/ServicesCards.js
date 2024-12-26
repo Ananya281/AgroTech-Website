@@ -1,59 +1,71 @@
 import React from "react";
 
-const cardsData = [
-  {
-    title: "Technical Support",
-    description: "Expert assistance to overcome technical challenges and optimize project execution.",
-    id: "/001",
-  },
-  {
-    title: "Project Consultation",
-    description: "Comprehensive guidance to ensure smooth and efficient project delivery.",
-    id: "/002",
-  },
-  {
-    title: "Expert Guidance",
-    description: "Specialized advice to help you achieve project goals successfully.",
-    id: "/003",
-  },
-  {
-    title: "Research & Development",
-    description: "Innovative solutions tailored to your specific needs and challenges.",
-    id: "/004",
-  },
-  {
-    title: "Strategy Planning",
-    description: "Helping you align your goals with effective strategies.",
-    id: "/005",
-  },
-  {
-    title: "Customer Support",
-    description: "Dedicated support to ensure your success and satisfaction.",
-    id: "/006",
-  },
-];
-
-const ServicesCards = () => {
+const SolutionsSection = () => {
   return (
-    <section className="py-8 bg-white text-center mb-10">
-      <div className="max-w-7xl mx-auto px-3 mb-10">
-        {/* <h2 className="text-4xl font-bold text-gray-800 mb-8">Our Services</h2> */}
+    <section className="py-20 bg-gradient-to-b from-green-50 via-green-100 to-white text-center relative">
+      {/* Background Animation */}
+      <div className="absolute inset-0 bg-gradient-to-b from-green-200 via-green-100 to-white opacity-80 pointer-events-none"></div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
-          {cardsData.map((card, index) => (
-            <div
-              key={index}
-              className="bg-gray-100 rounded-lg p-8 flex flex-col justify-between"
-            >
-              <h3 className="text-2xl font-bold text-gray-900 mb-4 text-wrap text-left">{card.title}</h3>
-              <p className="text-gray-600 text-md mb-4 text-left">{card.description}</p>
-              <span className="text-gray-400 text-lg font-medium text-right">{card.id}</span>
-            </div>
-          ))}
-        </div>
+      {/* Glassy Card Content */}
+      <div className="relative z-10 max-w-4xl mx-auto px-6 bg-white/10 rounded-lg shadow-2xl backdrop-blur-xl border border-white/30 p-10 mb-50">
+        <h2 className="text-5xl font-extrabold text-green-800 mb-8 leading-tight">
+          Our <span className="text-yellow-500">Agricultural Solutions</span>
+        </h2>
+        <p className="text-lg md:text-xl text-gray-800 leading-relaxed mb-10">
+          Addressing agricultural challenges with <strong>innovative</strong> and <strong>cost-effective</strong> solutions. We aim to enhance crop productivity, minimize waste, and ensure sustainable farming practices for a better future.
+        </p>
+        <button className="px-8 py-3 bg-green-600 text-white rounded-full shadow-lg hover:bg-green-700 transition duration-300">
+          Learn More
+        </button>
       </div>
+
+      {/* Decorative Floating Elements with Moving Animation */}
+      <div className="absolute -top-10 left-10 w-40 h-40 bg-yellow-300 rounded-full opacity-80 blur-xl animate-floating-slow"></div>
+      <div className="absolute bottom-0 right-20 w-24 h-24 bg-yellow-300 rounded-full opacity-40 blur-lg animate-floating-medium"></div>
+      <div className="absolute top-1/4 right-1/4 w-32 h-32 bg-yellow-300 rounded-full opacity-30 blur-lg animate-floating-fast"></div>
+
+      <style jsx>{`
+        @keyframes floating-slow {
+          0%, 100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-20px);
+          }
+        }
+
+        @keyframes floating-medium {
+          0%, 100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-30px);
+          }
+        }
+
+        @keyframes floating-fast {
+          0%, 100% {
+            transform: translateY(0);
+          }
+          50% {
+            transform: translateY(-40px);
+          }
+        }
+
+        .animate-floating-slow {
+          animation: floating-slow 6s ease-in-out infinite;
+        }
+
+        .animate-floating-medium {
+          animation: floating-medium 4s ease-in-out infinite;
+        }
+
+        .animate-floating-fast {
+          animation: floating-fast 3s ease-in-out infinite;
+        }
+      `}</style>
     </section>
   );
 };
 
-export default ServicesCards;
+export default SolutionsSection;

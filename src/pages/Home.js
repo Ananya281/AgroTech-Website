@@ -5,14 +5,13 @@ import InnovationSection from "../components/Home/InnovationSection";
 import WhyUsSection from "../components/Home/WhyUsSection";
 import ResearchAreas from "../components/Home/ResearchAreas";
 import SolutionsSection from "../components/Home/SolutionsSection";
-import ObjectivesSection from "../components/Home/ObjectivesSection";
 import GallerySection from "../components/Home/GallerySection";
 
 const Home = () => {
   return (
     <ParallaxProvider>
       <div>
-        <Parallax speed={-15} >
+        <Parallax speed={-15}>
           <HeroSection />
         </Parallax>
         <Parallax speed={15} className="bg-gray-50">
@@ -27,10 +26,7 @@ const Home = () => {
         <Parallax speed={-5}>
           <SolutionsSection />
         </Parallax>
-        <Parallax speed={20}>
-          <ObjectivesSection />
-        </Parallax>
-        <Parallax speed={-15}>
+        <Parallax speed={15}>
           <GallerySection />
         </Parallax>
       </div>

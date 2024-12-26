@@ -57,14 +57,14 @@ const GallerySection = () => {
           <div
             key={index}
             style={{
-              height: `${250 + Math.random() * 200}px`, // Random heights
+              height: `${300 + Math.random() * 200}px`, // Random heights
             }}
             className="flex-shrink-0 z-100 transition-transform duration-300 transform hover:scale-110" // Add hover animation here
           >
             <img
               src={image}
               alt={`Image ${index + 1}`}
-              className="h-full w-200 object-cover rounded-lg z-40"
+              className="h-full w-60 object-cover rounded-lg z-40"
             />
           </div>
         ))}
