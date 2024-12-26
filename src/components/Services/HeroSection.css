@@ -1,0 +1,41 @@
+@keyframes typewriter {
+    0% {
+      width: 0;
+    }
+    50% {
+      width: 1400px; /* Adjust this value based on your desired width */
+    }
+    100% {
+      width: 0; /* Reset to simulate typing from the beginning */
+    }
+  }
+  
+  @keyframes blinkTextCursor {
+    0% {
+      border-right-color: hsl(0, 0%, 80%);
+    }
+    50% {
+      border-right-color: transparent;
+    }
+    100% {
+      border-right-color: hsl(0, 0%, 80%);
+    }
+  }
+  
+  .typewriter-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 100%; /* Ensure it adjusts based on your layout */
+  }
+  
+  .typewriter-text {
+    display: inline-block;
+    animation: typewriter 12s steps(30) infinite, blinkTextCursor 500ms steps(30) infinite;
+    border-right: 2px solid hsl(0, 0%, 80%);
+    padding-right: 10px;
+  }
+  

@@ -1,53 +1,57 @@
 import React from "react";
 
+const cardsData = [
+  {
+    title: "Technical Support",
+    description: "Expert assistance to overcome technical challenges and optimize project execution.",
+    id: "/001",
+  },
+  {
+    title: "Project Consultation",
+    description: "Comprehensive guidance to ensure smooth and efficient project delivery.",
+    id: "/002",
+  },
+  {
+    title: "Expert Guidance",
+    description: "Specialized advice to help you achieve project goals successfully.",
+    id: "/003",
+  },
+  {
+    title: "Research & Development",
+    description: "Innovative solutions tailored to your specific needs and challenges.",
+    id: "/004",
+  },
+  {
+    title: "Strategy Planning",
+    description: "Helping you align your goals with effective strategies.",
+    id: "/005",
+  },
+  {
+    title: "Customer Support",
+    description: "Dedicated support to ensure your success and satisfaction.",
+    id: "/006",
+  },
+];
+
 const ServicesCards = () => {
   return (
-    <section className="py-16 bg-white text-center">
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-7xl mx-auto">
-        {/* Technical Support */}
-        <div className="p-6 bg-gray-50 rounded-lg shadow-md">
-          <img
-            src="path-to-technical-support-image.jpg"
-            alt="Technical Support"
-            className="mx-auto w-24 h-24 mb-4"
-          />
-          <h3 className="text-xl font-bold mb-2">Technical Support</h3>
-          <p className="text-gray-600">
-            Expert assistance to overcome technical challenges and optimize project execution.
-          </p>
-        </div>
+    <section className="py-8 bg-white text-center mb-10">
+      <div className="max-w-7xl mx-auto px-3 mb-10">
+        {/* <h2 className="text-4xl font-bold text-gray-800 mb-8">Our Services</h2> */}
 
-        {/* Project Consultation */}
-        <div className="p-6 bg-gray-50 rounded-lg shadow-md">
-          <img
-            src="path-to-project-consultation-image.jpg"
-            alt="Project Consultation"
-            className="mx-auto w-24 h-24 mb-4"
-          />
-          <h3 className="text-xl font-bold mb-2">Project Consultation</h3>
-          <p className="text-gray-600">
-            Comprehensive guidance to ensure smooth and efficient project delivery.
-          </p>
-        </div>
-
-        {/* Expert Guidance */}
-        <div className="p-6 bg-gray-50 rounded-lg shadow-md">
-          <img
-            src="path-to-expert-guidance-image.jpg"
-            alt="Expert Guidance"
-            className="mx-auto w-24 h-24 mb-4"
-          />
-          <h3 className="text-xl font-bold mb-2">Expert Guidance</h3>
-          <p className="text-gray-600">
-            Specialized advice to help you achieve project goals successfully.
-          </p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+          {cardsData.map((card, index) => (
+            <div
+              key={index}
+              className="bg-gray-100 rounded-lg p-8 flex flex-col justify-between"
+            >
+              <h3 className="text-2xl font-bold text-gray-900 mb-4 text-wrap text-left">{card.title}</h3>
+              <p className="text-gray-600 text-md mb-4 text-left">{card.description}</p>
+              <span className="text-gray-400 text-lg font-medium text-right">{card.id}</span>
+            </div>
+          ))}
         </div>
       </div>
-
-      <p className="mt-8 text-gray-600 max-w-3xl mx-auto">
-        Don't let hurdles stall your progress. Contact us today to discuss how we can assist you in surmounting
-        obstacles and propel your project towards success!
-      </p>
     </section>
   );
 };
