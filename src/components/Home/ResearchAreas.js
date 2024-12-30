@@ -18,7 +18,7 @@ const ResearchAreas = () => {
 
   return (
     <section
-      className="relative flex flex-col items-center justify-center text-center py-2 px-6 bg-white mb-[150px] h-[100%]"
+      className="relative flex flex-col items-center justify-center text-center py-2 px-6 bg-white mb-[100px] h-[100%]"
       onMouseMove={handleMouseMove}
     >
       {/* Small Heading */}
