@@ -1,9 +1,21 @@
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
+import { useScroll, useTransform, motion } from "framer-motion";
 import backgroundImage from "../../assets/image/farmer.jpeg"; // Replace with the path to your background image
 
 const WhyUsSection = () => {
   const maskRef = useRef(null);
+  const sectionRef = useRef(null);
+  const [hoveringText, setHoveringText] = useState(false);
+
+  // Use `useScroll` and `useTransform` for the background image and overlay
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start end', 'start start'],
+  });
+
+  const yTransform = useTransform(scrollYProgress, [0, 1], ['0%', '-20%']); // Parallax effect
+  const scaleTransform = useTransform(scrollYProgress, [0, 1], [1.2, 1]); // Zoom-out effect
 
   useEffect(() => {
     const updateMaskPosition = (e) => {
@@ -12,8 +24,8 @@ const WhyUsSection = () => {
 
       // Update mask position using GSAP
       gsap.to(maskRef.current, {
-        x: x - 100, // Adjust offset to center the mask
-        y: y - 100,
+        x: x - 50, // Adjust offset to center the mask
+        y: y - 50,
         duration: 0.2,
         ease: "power2.out",
       });
@@ -30,22 +42,45 @@ const WhyUsSection = () => {
     };
   }, []);
 
+  useEffect(() => {
+    // Adjust mask size based on hoveringText state
+    gsap.to(maskRef.current, {
+      scale: hoveringText ? 7.5 : 1.2,
+      duration: 0.3,
+      ease: "power2.out",
+    });
+  }, [hoveringText]);
+
   return (
     <section
+      ref={sectionRef}
       className="relative h-screen w-full text-center flex flex-col justify-center items-center text-white overflow-hidden"
-      style={{
-        backgroundImage: `url(${backgroundImage})`,
-        backgroundSize: "cover",
-        backgroundPosition: "center",
-      }}
     >
-      {/* Black Overlay */}
-      <div className="absolute inset-0 bg-black bg-opacity-60"></div>
+      {/* Background and Black Overlay with Parallax and Zoom-Out */}
+      <motion.div
+        style={{
+          y: yTransform,
+          scale: scaleTransform,
+        }}
+        className="absolute inset-0"
+      >
+        {/* Background Image */}
+        <div
+          style={{
+            backgroundImage: `url(${backgroundImage})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+          }}
+          className="absolute inset-0"
+        ></div>
+        {/* Black Overlay */}
+        <div className="absolute inset-0 bg-black bg-opacity-60"></div>
+      </motion.div>
 
       {/* GSAP Mask */}
       <div
         ref={maskRef}
-        className="fixed w-80 h-80 rounded-full bg-white mix-blend-difference pointer-events-none z-50"
+        className="fixed w-10 h-10 rounded-full bg-white mix-blend-difference pointer-events-none z-50"
         style={{
           top: 0,
           left: 0,
@@ -53,7 +88,11 @@ const WhyUsSection = () => {
       ></div>
 
       {/* Content */}
-      <div className="absolute z-10">
+      <div
+        className="absolute z-10"
+        onMouseEnter={() => setHoveringText(true)}
+        onMouseLeave={() => setHoveringText(false)}
+      >
         <h2
           className="text-4xl md:text-6xl font-extrabold mb-4 max-w-50"
           style={{ fontFamily: "'Merriweather', serif" }}

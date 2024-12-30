@@ -17,7 +17,10 @@ const ResearchAreas = () => {
   };
 
   return (
-    <section className="relative flex flex-col items-center justify-center text-center py-16 px-8 bg-white mb-[150px]">
+    <section
+      className="relative flex flex-col items-center justify-center text-center py-2 px-6 bg-white mb-[150px] h-[100%]"
+      onMouseMove={handleMouseMove}
+    >
       {/* Small Heading */}
       <h3
         className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-4"
@@ -27,17 +30,12 @@ const ResearchAreas = () => {
       </h3>
 
       {/* Separator Line */}
-      <div className="w-64 h-[1px] bg-green-600 mb-8"></div>
+      <div className="w-64 h-[0.5px] bg-green-600 mb-8"></div>
 
       {/* Main Content */}
       <div className="max-w-6xl">
         {/* Card 1 (Guava Probi) */}
-        <div
-          className="flex flex-col md:flex-row items-center gap-12 mb-16"
-          onMouseMove={handleMouseMove}
-          onMouseEnter={() => setHoveredCard("guava")}
-          onMouseLeave={() => setHoveredCard(null)}
-        >
+        <div className="flex flex-col md:flex-row items-center gap-12 mb-16">
           {/* Description */}
           <motion.div
             className="md:w-1/2"
@@ -65,10 +63,14 @@ const ResearchAreas = () => {
 
           {/* Card with Hover Video Effect */}
           <motion.div
-            className="relative w-full md:w-1/2 h-[350px] rounded-lg overflow-hidden shadow-lg group cursor-pointer"
+            className="relative w-full md:w-1/2 h-[350px] rounded-lg overflow-hidden shadow-lg group"
             initial={{ opacity: 0.8 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
+            onMouseEnter={() => setHoveredCard("guava")}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={() => setHoveredCard(null)}
+            // style={{ cursor: "none" }} // Hide default cursor only on the card
           >
             {hoveredCard === "guava" ? (
               <video
@@ -85,24 +87,12 @@ const ResearchAreas = () => {
                 className="absolute inset-0 w-full h-full object-cover"
               />
             )}
-            <div className="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-70 flex items-center justify-center transition-all">
-              {/* <h4
-                className="text-white text-lg font-bold"
-                style={{ fontFamily: "'Merriweather', serif" }}
-              >
-                VIEW DETAILS
-              </h4> */}
-            </div>
+            <div className="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-70 flex items-center justify-center transition-all"></div>
           </motion.div>
         </div>
 
         {/* Card 2 (IRIS) */}
-        <div
-          className="flex flex-col md:flex-row-reverse items-center gap-12"
-          onMouseMove={handleMouseMove}
-          onMouseEnter={() => setHoveredCard("iris")}
-          onMouseLeave={() => setHoveredCard(null)}
-        >
+        <div className="flex flex-col md:flex-row-reverse items-center gap-12">
           {/* Description */}
           <motion.div
             className="md:w-1/2"
@@ -129,10 +119,14 @@ const ResearchAreas = () => {
 
           {/* Card with Hover Video Effect */}
           <motion.div
-            className="relative w-full md:w-1/2 h-[350px] rounded-lg overflow-hidden shadow-lg group cursor-pointer"
+            className="relative w-full md:w-1/2 h-[350px] rounded-lg overflow-hidden shadow-lg group"
             initial={{ opacity: 0.8 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
+            onMouseEnter={() => setHoveredCard("iris")}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={() => setHoveredCard(null)}
+            // style={{ cursor: "none" }} // Hide default cursor only on the card
           >
             {hoveredCard === "iris" ? (
               <video
@@ -149,14 +143,7 @@ const ResearchAreas = () => {
                 className="absolute inset-0 w-full h-full object-cover"
               />
             )}
-            <div className="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-70 flex items-center justify-center transition-all">
-              {/* <h4
-                className="text-white text-lg font-bold"
-                style={{ fontFamily: "'Merriweather', serif" }}
-              >
-                VIEW DETAILS
-              </h4> */}
-            </div>
+            <div className="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-70 flex items-center justify-center transition-all"></div>
           </motion.div>
         </div>
       </div>
@@ -170,9 +157,10 @@ const ResearchAreas = () => {
             top: `${cursorPosition.y}px`,
             transform: "translate(-50%, -50%)",
           }}
+          initial={{ scale: 0, opacity: 0 }}
           animate={{
-            scale: 1.2,
-            opacity: 1,
+            scale: hoveredCard ? 1.2 : 0,
+            opacity: hoveredCard ? 1 : 0,
           }}
           transition={{
             type: "spring",

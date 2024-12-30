@@ -17,7 +17,7 @@ const Home = () => {
         <Parallax speed={15} className="bg-gray-50">
           <InnovationSection />
         </Parallax>
-        <Parallax speed={-10}>
+        <Parallax speed={-5}>
           <WhyUsSection />
         </Parallax>
         <Parallax speed={15}>

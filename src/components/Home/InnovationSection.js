@@ -2,7 +2,7 @@ import React from "react";
 
 const InnovationSection = () => {
   return (
-    <section className="relative flex flex-col items-center justify-center text-center py-4 px-8 bg-white mb-[150px]">
+    <section className="relative flex flex-col items-center justify-center text-center py-4 px-8 bg-white mb-[100px]">
       {/* Small Heading */}
       <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-4" style={{ fontFamily: "'Merriweather', serif" }}>
         A LITTLE BIT ABOUT US
