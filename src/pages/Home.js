@@ -11,7 +11,7 @@ const Home = () => {
   return (
     <ParallaxProvider>
       <div>
-        <Parallax speed={-15}>
+        <Parallax speed={-5}>
           <HeroSection />
         </Parallax>
         <Parallax speed={15} className="bg-gray-50">

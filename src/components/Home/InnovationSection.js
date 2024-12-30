@@ -3,7 +3,7 @@ import guavaImage from "../../assets/image/guava2.png"; // Import your image
 
 const InnovationSection = () => {
   return (
-    <section className="py-6 px-7 mb-20 bg-white flex flex-col md:flex-row items-center gap-10">
+    <section className="-mt-[100px] py-6 px-7 mb-20 z-20 bg-white flex flex-col md:flex-row items-center gap-10">
     {/* Image Section */}
     <div
       className="w-full md:w-1/2 flex justify-center items-center"

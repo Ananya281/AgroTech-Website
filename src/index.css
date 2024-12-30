@@ -156,3 +156,28 @@ button {
 section {
   position: relative;
 }
+
+body {
+  margin: 0;
+  overflow: hidden; /* Prevent scrolling while the preloader is visible */
+}
+
+.preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.counter {
+  color: #fff;
+  font-size: 5rem;
+  font-family: Arial, sans-serif;
+}
+
