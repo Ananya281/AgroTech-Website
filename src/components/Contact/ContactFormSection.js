@@ -3,8 +3,8 @@ import { motion } from "framer-motion";
 
 const ContactFormSection = () => {
   return (
-    <section id="contact-form" className="py-16 bg-gray-50">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto py-5">
+    <section id="contact-form" className="py-16 bg-gray-50 px-10">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-7xl mx-auto py-5 mt-[30px]">
         {/* Form Section */}
         <motion.div
           initial={{ x: -100, opacity: 0 }}
@@ -60,7 +60,7 @@ const ContactFormSection = () => {
             Visit Us
           </h2>
           {/* Map */}
-          <div className="relative h-64 md:h-96 border rounded-lg overflow-hidden">
+          <div className="relative h-64 md:h-96 border rounded-lg overflow-hidden mb-[100px]">
             <iframe
               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8886.105565062839!2d76.50841007403253!3d30.372119706217084!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390fedb3cf0c7b49%3A0x54dbf2f90e12b6c0!2sThapar%20Institute%20of%20Engineering%20and%20Technology!5e0!3m2!1sen!2sin!4v1669892680297!5m2!1sen!2sin"
               width="100%"
@@ -74,7 +74,7 @@ const ContactFormSection = () => {
       </div>
 
       {/* Footer Contact Info */}
-      <div className="bg-white py-6 mt-8">
+      <div className="bg-white py-6 mt-10">
         <div className="flex justify-center space-x-10">
           <div className="text-center text-gray-700">
             <i className="fas fa-map-marker-alt text-3xl mb-2 text-green-600"></i>

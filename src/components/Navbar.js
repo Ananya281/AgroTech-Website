@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBars, faTimes } from "@fortawesome/free-solid-svg-icons"; // Importing menu and close icons
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -39,8 +41,6 @@ const Navbar = () => {
     { name: "About", path: "/about" },
     { name: "Products", path: "/products" },
     { name: "Services", path: "/services" },
-    // { name: "Research", path: "/research" },
-    // { name: "Get Involved", path: "/get-involved" },
     { name: "Contact", path: "/contact" },
   ];
 
@@ -85,7 +85,7 @@ const Navbar = () => {
           className="md:hidden text-gray-100 text-lg font-bold"
           onClick={() => setIsOpen(true)}
         >
-          MENU
+          <FontAwesomeIcon icon={faBars} size="lg" /> {/* Menu icon */}
         </button>
       </div>
 
@@ -103,7 +103,7 @@ const Navbar = () => {
               className="absolute top-4 right-6 text-2xl font-bold text-yellow-300"
               onClick={() => setIsOpen(false)}
             >
-              CLOSE
+              <FontAwesomeIcon icon={faTimes} size="lg" /> {/* Close icon */}
             </button>
             <nav className="flex flex-col items-center space-y-6 text-2xl">
               {menuItems.map((item, i) => (

@@ -66,7 +66,7 @@ const OurMission = () => {
           <h2 className="text-4xl md:text-5xl font-bold uppercase tracking-wider mx-20">
             Mission <br /> + <br /> Vision
           </h2>
-          <p className="text-sm md:text-lg max-w-4xl mx-auto text-gray-600 mt-4">
+          <p className="text-lg md:text-lg max-w-4xl mx-auto text-gray-600 mt-4">
             We rescue farmed animals and give them care and sanctuary, connect
             animals with people to advance veganism, and advocate for animal
             rights in alliance with other social justice movements. The

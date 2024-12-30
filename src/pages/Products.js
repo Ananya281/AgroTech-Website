@@ -2,18 +2,14 @@ import React from "react";
 import HeroSection from "../components/Products/HeroSection";
 import ProductCards from "../components/Products/ProductCards";
 import GuavaProbiSection from "../components/Products/GuavaProbiSection";
-import BenefitsSection from "../components/Products/BenefitsSection";
 import VarietySection from "../components/Products/VarietySection";
 import IrisSection from "../components/Products/IrisSection";
-import WhyIrisSection from "../components/Products/WhyIrisSection";
-import WholesaleSection from "../components/Products/WholesaleSection";
-import RetailerSection from "../components/Products/RetailerSection";
-import ConsumerSection from "../components/Products/ConsumerSection";
+import "../App.css"; // Assuming fade-in styles are in App.css
 
 const Products = () => {
   return (
-    <div>
-      <HeroSection title="Welcome to Our Products"/>
+    <div className="fade-in">
+      <HeroSection title="Welcome to Our Products" />
       <ProductCards />
       <GuavaProbiSection />
       {/* <BenefitsSection /> */}
@@ -22,7 +18,7 @@ const Products = () => {
       {/* <WhyIrisSection /> */}
       {/* <WholesaleSection /> */}
       {/* <RetailerSection /> */}
-      {/* <ConsumerSection />  */}
+      {/* <ConsumerSection /> */}
     </div>
   );
 };

@@ -1,5 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from 'react-scroll'; // Import Link from react-scroll
 import heroImage from "../../assets/image/c.jpeg"; // Adjust the path as per your folder structure
 
 const HeroSection = () => {
@@ -8,13 +9,16 @@ const HeroSection = () => {
       className="h-screen relative flex items-center justify-center text-white"
       style={{
         backgroundImage: `url(${heroImage})`,
-        backgroundSize: "cover", // Ensures the image covers the entire section
-        backgroundRepeat: "no-repeat", // Prevents the image from repeating
-        backgroundPosition: "center", // Centers the image
+        backgroundSize: "cover",
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
       }}
     >
       {/* Overlay Gradient */}
       <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-black opacity-100"></div>
+
+      {/* Black Overlay */}
+      <div className="absolute inset-0 bg-black bg-opacity-60"></div>
 
       {/* Hero Text Animation */}
       <motion.div
@@ -32,18 +36,20 @@ const HeroSection = () => {
       </motion.div>
 
       {/* Decorative Scroll Down Indicator */}
-      <motion.div
+      <Link
+        to="contact-form" // Scroll to the section with the id "contact-form"
+        smooth={true}
+        duration={1000} // Increased duration for a smoother, slower scroll
+        offset={-50} // Adjust offset if you have a fixed navigation bar
         className="absolute bottom-8 z-10 flex items-center justify-center w-10 h-10 border-2 border-white rounded-full cursor-pointer"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1 }}
+        style={{ cursor: "pointer" }}
       >
         <motion.div
           className="w-2 h-2 bg-white rounded-full"
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 1.5 }}
         />
-      </motion.div>
+      </Link>
     </header>
   );
 };

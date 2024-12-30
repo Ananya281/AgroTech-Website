@@ -6,11 +6,12 @@ import WhyUsSection from "../components/Home/WhyUsSection";
 import ResearchAreas from "../components/Home/ResearchAreas";
 import SolutionsSection from "../components/Home/SolutionsSection";
 import GallerySection from "../components/Home/GallerySection";
+import "../App.css"; // Assuming fade-in styles are in App.css
 
 const Home = () => {
   return (
     <ParallaxProvider>
-      <div>
+      <div className="fade-in">
         <Parallax speed={-5}>
           <HeroSection />
         </Parallax>

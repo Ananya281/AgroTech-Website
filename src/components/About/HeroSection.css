@@ -1,0 +1,38 @@
+/* Importing Google Fonts (Playfair Display for a similar look) */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&display=swap');
+
+/* HeroSection specific styles */
+.logo-container {
+  position: relative;
+}
+
+/* Styling for the text in HeroSection */
+#page-logo {
+  font-family: 'Playfair Display', serif; /* Applying Playfair Display font */
+  font-weight: bold;
+  font-size: 6rem; /* Adjust size as necessary */
+  text-transform: uppercase;
+  color: white;
+  line-height: 1.2;
+  letter-spacing: 1px;
+  text-shadow: 3px 3px 0 rgba(0, 0, 0, 0.3); /* Adds subtle shadow effect */
+}
+
+/* 3D text effect */
+#page-logo.3d-text {
+  text-shadow: 
+    2px 2px 5px rgba(0, 0, 0, 0.4), 
+    4px 4px 10px rgba(0, 0, 0, 0.3), 
+    6px 6px 15px rgba(0, 0, 0, 0.2), 
+    8px 8px 20px rgba(0, 0, 0, 0.1);
+  transform: rotateX(15deg) rotateY(-15deg);
+  transition: all 0.3s ease-in-out;
+}
+
+#page-logo:hover {
+  transform: rotateX(0) rotateY(0);
+  text-shadow: 
+    4px 4px 12px rgba(0, 0, 0, 0.5), 
+    6px 6px 18px rgba(0, 0, 0, 0.4), 
+    8px 8px 25px rgba(0, 0, 0, 0.3);
+}

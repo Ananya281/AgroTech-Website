@@ -1,30 +1,19 @@
 import React from "react";
-import { ParallaxProvider, Parallax } from "react-scroll-parallax";
-import HeroSection from "../components/Contact/HeroSection";
-import ContactForm from "../components/Contact/ContactForm";
-import VisitUs from "../components/Contact/VisitUs";
-import ConnectWithUs from "../components/Contact/ConnectWithUs";
+import { ParallaxProvider, Parallax } from 'react-scroll-parallax'; // Import Parallax components
+import HeroSection from "../components/Contact/HeroSection"; // Import HeroSection component
+import ContactFormSection from "../components/Contact/ContactFormSection"; // Import ContactFormSection component
 
 const Contact = () => {
   return (
     <ParallaxProvider>
-      <div>
+      <div className="fade-in">
         <Parallax speed={-10}>
           <HeroSection />
         </Parallax>
 
         <Parallax speed={5}>
-          <ContactForm />
+          <ContactFormSection />
         </Parallax>
-
-        <Parallax speed={-14}>
-          <VisitUs />
-        </Parallax>
-
-        {/* Uncomment if needed */}
-        {/* <Parallax speed={10}>
-          <ConnectWithUs />
-        </Parallax> */}
       </div>
     </ParallaxProvider>
   );

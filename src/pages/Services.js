@@ -3,11 +3,12 @@ import { ParallaxProvider, Parallax } from "react-scroll-parallax";
 import HeroSection from "../components/Services/HeroSection";
 import AssistanceSection from "../components/Services/AssistanceSection";
 import ServicesCards from "../components/Services/ServicesCards";
+import "../App.css"; // Assuming fade-in styles are in App.css
 
 const Services = () => {
   return (
     <ParallaxProvider>
-      <div>
+      <div className="fade-in">
         <Parallax speed={-15}>
           <HeroSection />
         </Parallax>

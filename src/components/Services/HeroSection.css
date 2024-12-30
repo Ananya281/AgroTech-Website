@@ -34,7 +34,7 @@
   
   .typewriter-text {
     display: inline-block;
-    animation: typewriter 12s steps(30) infinite, blinkTextCursor 500ms steps(30) infinite;
+    animation: typewriter 12s steps(30) infinite, blinkTextCursor 250ms steps(30) infinite;
     border-right: 2px solid hsl(0, 0%, 80%);
     padding-right: 10px;
   }

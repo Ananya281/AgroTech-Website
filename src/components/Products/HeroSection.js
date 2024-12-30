@@ -9,17 +9,17 @@ const HeroSection = ({ title = "Welcome to Our Products" }) => {
         <div
           className="h-full bg-cover bg-center relative"
           style={{
-    backgroundImage: `url(${heroImage})`,
-    backgroundSize: "cover",
-    backgroundPosition: "center",
-    height: "100vh",
-  }}
+            backgroundImage: `url(${heroImage})`,
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            height: "100vh",
+          }}
         >
           {/* Overlay */}
           <div className="absolute inset-0 bg-black bg-opacity-50"></div>
 
           {/* Title Text */}
-          <h1 className="absolute inset-0 flex items-center justify-center text-white text-4xl md:text-6xl font-bold drop-shadow-lg">
+          <h1 className="absolute inset-0 flex items-center justify-center text-white font-poppins text-5xl md:text-8xl lg:text-7xl font-extrabold drop-shadow-lg">
             {title}
           </h1>
         </div>

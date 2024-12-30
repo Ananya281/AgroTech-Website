@@ -164,3 +164,16 @@ body {
     height: 3px; /* Reduce bar height further */
   }
 }
+/* Fade-In Effect */
+.fade-in {
+  animation: fadeIn 1s ease-in-out forwards; /* Increased duration to 1.5s */
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0; /* Start fully transparent */
+  }
+  100% {
+    opacity: 1; /* End fully visible */
+  }
+}
