@@ -10,57 +10,57 @@ import guava2 from "../../assets/image/guava2.png";
 import guavaPhobi from "../../assets/image/GuavaPhobi.png";
 
 const GallerySection = () => {
-  // Separate arrays for 6 and 9 images
-  const imagesForLaptop = [
-    { src: a, alt: "A description" },
-    { src: b, alt: "B description" },
-    { src: c, alt: "C description" },
-    { src: d, alt: "D description" },
-    { src: e, alt: "E description" },
-    { src: farmer, alt: "Farmer" },
-  ];
-
-  const imagesForDesktop = [
-    ...imagesForLaptop,
-    { src: guava, alt: "Guava image 1" },
-    { src: guava2, alt: "Guava image 2" },
-    { src: guavaPhobi, alt: "Guava Phobi" },
+  const images = [
+    { src: a, alt: "1" },
+    { src: b, alt: "2" },
+    { src: c, alt: "5" },
+    { src: d, alt: "7" },
+    { src: e, alt: "8" },
+    { src: farmer, alt: "9" },
   ];
 
   return (
     <section className="flex justify-center items-center min-h-screen py-16">
-      {/* Grid for Laptop Screens (6 Images) */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 px-10 lg:hidden">
-        {imagesForLaptop.map((image, index) => (
-          <div
-            key={index}
-            className="relative w-full h-40 sm:h-60 lg:h-80 overflow-hidden cursor-pointer group"
-          >
-            <img
-              src={image.src}
-              alt={image.alt}
-              className="w-full h-full object-cover transition-transform duration-500 transform group-hover:scale-[1.3] group-hover:translate-z-0 group-hover:transform-origin-center grayscale hover:grayscale-0"
-              style={{ transformOrigin: "center" }}
-            />
-          </div>
-        ))}
-      </div>
+      <div
+        className="grid gap-2"
+        style={{
+          gridTemplateAreas: `
+            "one one two"
+            "five five two"
+            "seven eight nine"
+            "eleven eleven eleven"
+          `,
+          gridTemplateColumns: "400px 400px 400px", // Reduced column size
+          gridTemplateRows: "200px 200px 200px", // Reduced row size
+        }}
+      >
+        {images.map((image, index) => {
+          const gridAreaNames = [
+            "one",
+            "two",
+            "five",
+            "seven",
+            "eight",
+            "nine",
+            "eleven",
+          ];
 
-      {/* Grid for Desktop Screens (9 Images) */}
-      <div className="hidden lg:grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-2 px-10">
-        {imagesForDesktop.map((image, index) => (
-          <div
-            key={index}
-            className="relative w-full h-40 sm:h-60 lg:h-80 overflow-hidden cursor-pointer group"
-          >
-            <img
-              src={image.src}
-              alt={image.alt}
-              className="w-full h-full object-cover transition-transform duration-500 transform group-hover:scale-[1.3] group-hover:translate-z-0 group-hover:transform-origin-center grayscale hover:grayscale-0"
-              style={{ transformOrigin: "center" }}
-            />
-          </div>
-        ))}
+          return (
+            <div
+              key={index}
+              className={`relative overflow-hidden cursor-pointer group`}
+              style={{
+                gridArea: gridAreaNames[index], // Dynamically set grid area
+              }}
+            >
+              <img
+                src={image.src}
+                alt={image.alt}
+                className="w-full h-full object-cover transition-transform duration-500 transform group-hover:scale-110 grayscale hover:grayscale-0"
+              />
+            </div>
+          );
+        })}
       </div>
     </section>
   );

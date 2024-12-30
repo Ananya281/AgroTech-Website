@@ -64,7 +64,8 @@
 }
 
 @keyframes float {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(-10px);
   }
   50% {
@@ -73,7 +74,8 @@
 }
 
 @keyframes float-slower {
-  0%, 100% {
+  0%,
+  100% {
     transform: translateY(-15px);
   }
   50% {
@@ -96,11 +98,13 @@
 .animate-float-slower {
   animation: float-slower 4.5s ease-in-out infinite;
 }
+
 body {
   margin: 0;
   overflow: hidden;
 }
 
+/* Loader Styles */
 .loading-page {
   position: fixed;
   top: 0;
@@ -114,10 +118,14 @@ body {
   z-index: 1000;
 }
 
+.counter {
+  text-align: center;
+}
+
 .counter h1 {
-  font-family: 'Nova Flat';
+  font-family: "Nova Flat", sans-serif;
   color: #fff;
-  font-size: 15rem;
+  font-size: 10rem; /* Adjust font size for responsiveness */
   margin: 0;
 }
 
@@ -128,4 +136,31 @@ body {
   background-color: #fff;
   border: none;
   transition: width 0.1s ease;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+  .counter h1 {
+    font-size: 8rem; /* Adjust for tablets */
+  }
+}
+
+@media (max-width: 768px) {
+  .counter h1 {
+    font-size: 6rem; /* Adjust for smaller tablets */
+  }
+
+  .counter hr {
+    height: 4px; /* Reduce bar height */
+  }
+}
+
+@media (max-width: 480px) {
+  .counter h1 {
+    font-size: 4rem; /* Adjust for mobile devices */
+  }
+
+  .counter hr {
+    height: 3px; /* Reduce bar height further */
+  }
 }

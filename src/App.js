@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ParallaxProvider } from "react-scroll-parallax";
 import Navbar from "./components/Navbar";
@@ -13,21 +13,24 @@ import $ from "jquery";
 import "./App.css";
 
 const App = () => {
+  const [showContent, setShowContent] = useState(false); // State to track when to show the website content
+
   useEffect(() => {
-    // jQuery-based loader animation
     let counter = 0;
     let c = 0;
+
+    // Loader animation logic
     const i = setInterval(() => {
       $(".loading-page .counter h1").html(`${c}%`);
       $(".loading-page .counter hr").css("width", `${c}%`);
-
       counter++;
       c++;
 
       if (counter === 101) {
         clearInterval(i);
-        $(".loading-page").fadeOut(500, () => {
+        $(".loading-page").fadeOut(1000, () => {
           $("body").css("overflow", "auto"); // Restore scrolling
+          setShowContent(true); // Trigger the display of website content
         });
       }
     }, 50); // Adjust duration as needed
@@ -43,26 +46,30 @@ const App = () => {
         </div>
       </div>
 
-      {/* Main Content */}
-      <Router>
-        <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route
-            path="/products"
-            element={
-              <ParallaxProvider>
-                <Products />
-              </ParallaxProvider>
-            }
-          />
-          <Route path="/services" element={<Services />} />
-          <Route path="/research" element={<Research />} />
-          <Route path="/get-involved" element={<GetInvolved />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </Router>
+      {/* Main Content with fading animation */}
+      {showContent && (
+        <div className="fade-in">
+          <Router>
+            <Navbar />
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/about" element={<About />} />
+              <Route
+                path="/products"
+                element={
+                  <ParallaxProvider>
+                    <Products />
+                  </ParallaxProvider>
+                }
+              />
+              <Route path="/services" element={<Services />} />
+              <Route path="/research" element={<Research />} />
+              <Route path="/get-involved" element={<GetInvolved />} />
+              <Route path="/contact" element={<Contact />} />
+            </Routes>
+          </Router>
+        </div>
+      )}
     </>
   );
 };
