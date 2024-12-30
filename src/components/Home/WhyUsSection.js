@@ -45,7 +45,7 @@ const WhyUsSection = () => {
       {/* GSAP Mask */}
       <div
         ref={maskRef}
-        className="fixed w-60 h-60 rounded-full bg-white mix-blend-difference pointer-events-none z-50"
+        className="fixed w-80 h-80 rounded-full bg-white mix-blend-difference pointer-events-none z-50"
         style={{
           top: 0,
           left: 0,
@@ -54,11 +54,19 @@ const WhyUsSection = () => {
 
       {/* Content */}
       <div className="absolute z-10">
-        <h2 className="text-4xl md:text-6xl font-extrabold mb-4">
-          WHY FV PLUS AGROTECH INNOVATION?
+        <h2
+          className="text-4xl md:text-6xl font-extrabold mb-4 max-w-50"
+          style={{ fontFamily: "'Merriweather', serif" }}
+        >
+          WHY FV PLUS <br /> AGROTECH INNOVATION?
         </h2>
-        <div className="w-24 h-1 bg-green-500 mx-auto my-4"></div>
-        <p className="text-lg md:text-2xl text-gray-200">OUR WORKS AND OBJECTIVES</p>
+        <div className="w-80 h-1 bg-green-500 mx-auto my-4"></div>
+        <p
+          className="text-lg md:text-xl text-gray-200"
+          style={{ fontFamily: "'Merriweather', serif" }}
+        >
+          OUR WORKS AND OBJECTIVES
+        </p>
       </div>
     </section>
   );

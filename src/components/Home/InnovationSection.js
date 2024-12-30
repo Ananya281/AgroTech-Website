@@ -1,44 +1,36 @@
 import React from "react";
-import guavaImage from "../../assets/image/guava2.png"; // Import your image
 
 const InnovationSection = () => {
   return (
-    <section className="-mt-[100px] py-6 px-7 mb-20 z-20 bg-white flex flex-col md:flex-row items-center gap-10">
-    {/* Image Section */}
-    <div
-      className="w-full md:w-1/2 flex justify-center items-center"
-      data-aos="fade-right"
-      data-aos-duration="1000"
-    >
-      <img
-        src={guavaImage}
-        alt="Guava"
-        className="w-full md:w-4/5 object-cover transform hover:scale-105 transition-transform duration-300"
-      />
-    </div>
-  
-    {/* Text Content Section */}
-    <div
-      className="w-full md:w-1/2"
-      data-aos="fade-left"
-      data-aos-duration="1000"
-    >
-      <h2 className="text-6xl font-extrabold text-gray-800 mb-4">
-        Innovation. Health. Growth.
-      </h2>
-      <p className="text-gray-600 text-lg leading-relaxed">
-        FV Plus Agrotech Innovation is an emerging player in the field of fresh
-        produce management. We specialize in pioneering and cost-effective
-        technologies for processing fruits and vegetables. Our solutions aim to
-        tackle food security challenges and promote sustainable agricultural
-        practices.
-      </p>
-      <button className="mt-6 bg-green-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-green-700 hover:scale-105 transition-all duration-300">
-        Know More
-      </button>
-    </div>
-  </section>
-  
+    <section className="relative flex flex-col items-center justify-center text-center py-4 px-8 bg-white mb-[150px]">
+      {/* Small Heading */}
+      <h3 className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-4" style={{ fontFamily: "'Merriweather', serif" }}>
+        A LITTLE BIT ABOUT US
+      </h3>
+
+      {/* Separator Line */}
+      <div className="w-64 h-[1px] bg-green-600 mb-8"></div>
+
+      {/* Main Content */}
+      <div className="max-w-4xl">
+        <h2 className="text-4xl font-bold text-gray-800 leading-tight mb-6" style={{ fontFamily: "'Merriweather', serif" }}>
+          Innovation. Health. Growth.
+        </h2>
+        <p className="text-lg text-gray-600 leading-relaxed mb-6" style={{ fontFamily: "'Merriweather', serif" }}>
+          FV Plus Agrotech Innovation is an emerging player in the field of fresh
+          produce management. We specialize in pioneering and cost-effective
+          technologies for processing fruits and vegetables. Our solutions aim to
+          tackle food security challenges and promote sustainable agricultural
+          practices.
+        </p>
+        <button
+          className="bg-green-600 text-white px-8 py-4 rounded-md font-semibold shadow-md hover:bg-green-700 hover:scale-105 transition-all duration-300"
+          style={{ fontFamily: "'Merriweather', serif" }}
+        >
+          Know More
+        </button>
+      </div>
+    </section>
   );
 };
 

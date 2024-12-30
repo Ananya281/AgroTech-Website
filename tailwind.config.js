@@ -5,9 +5,9 @@ module.exports = {
   ],
   theme: {
     extend: {
-      // backgroundClip: {
-      //   text: "text",
-      // },
+      fontFamily: {
+        roboto: ['Roboto', 'sans-serif'],
+      },
     },
   },
   plugins: [],

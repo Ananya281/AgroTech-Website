@@ -50,7 +50,7 @@ const HeroSection = () => {
       {/* Curvy SVG Divider */}
       <div className="absolute bottom-0 left-0 w-full leading-[0] z-10 -mb-[5px]">
         <svg
-          className="relative block w-full h-[270px]"
+          className="relative block w-full h-[250px]"
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 1200 120"
           preserveAspectRatio="none"
