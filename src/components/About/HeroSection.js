@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import farmerImage from "../../assets/image/farmer.jpeg"; // Adjust path based on your folder structure
-import './HeroSection.css';  // Importing HeroSection.css
+import './HeroSection.css'; // Importing HeroSection.css
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -60,22 +60,10 @@ const HeroSection = () => {
         className="absolute inset-0 bg-white opacity-0 pointer-events-none transition-opacity duration-500"
       ></div>
 
-      {/* Custom Glowing Cursor */}
-      <div
-        className="fixed w-0.1 h-0.1 bg-white rounded-full pointer-events-none z-50"
-        style={{
-          left: cursorStyle.left,
-          top: cursorStyle.top,
-          boxShadow: "0 0 120px 100px rgba(255, 255, 255, 0.6)",
-          transform: "translate(-50%, -50%)",
-        }}
-      ></div>
-
       {/* Content */}
       <div className="logo-container">
-        <h1 id="page-logo" className="font-serif text-7xl font-bold text-white leading-tight drop-shadow-lg m-5 p-5 text-center">
-          About Agro-Tech
-        </h1>
+        <h1 className="about-heading">About</h1>
+        <h2 className="agro-tech-heading">Agro-Tech</h2>
       </div>
     </header>
   );

@@ -1,19 +1,10 @@
 /* Importing Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400&display=swap');
 
-/* HeroSection specific styles */
-.logo-container {
-  position: relative;
-  text-align: center;
-  padding: 0 5%;
-  animation: fadeIn 2s ease-in-out;
-}
-
-/* About Heading (Using Playfair Display for Serif Look) */
+/* Styling for the hero container */
 .about-heading {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(2.8rem, 5vw, 5.5rem); /* Adjusted size for balance */
+  font-size: clamp(2.5rem, 5vw, 5rem); /* Adjust font size for responsiveness */
   font-weight: 900;
   color: white;
   text-transform: uppercase;
@@ -24,18 +15,16 @@
   opacity: 0;
 }
 
-/* Agro-Tech Heading (Slightly Larger with Bold Look) */
+/* Styling for the Agro-Tech Heading */
 .agro-tech-heading {
-  font-family: 'Playfair Display', serif; /* Matches the "Happy Faces" style */
-  font-size: clamp(4.5rem, 7vw, 7.5rem); /* Increased size */
+  font-family: 'Playfair Display', serif; /* Matching serif style */
+  font-size: clamp(3.5rem, 7vw, 8rem); /* Larger size for Agro-Tech */
   font-weight: 900;
-  color: #f5f5f5;
-  text-transform: capitalize;
-  letter-spacing: 1px;
-  margin: 20px 0 0;
   background: linear-gradient(90deg, #ff7e5f, #feb47b);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  letter-spacing: 1px;
+  margin-top: 20px;
   text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.3);
   animation: slideUp 1.2s ease-in-out forwards;
   opacity: 0;
@@ -64,40 +53,23 @@
   }
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
 /* Responsive layout adjustments */
 @media (max-width: 768px) {
-  .logo-container {
-    padding: 0 3%; /* Reduce padding for tablets */
-  }
-
   .about-heading {
-    font-size: clamp(2.2rem, 4vw, 4rem); /* Adjusted size for tablets */
+    font-size: clamp(2rem, 4vw, 4rem); /* Adjusted size for tablets */
   }
 
   .agro-tech-heading {
-    font-size: clamp(3.5rem, 6vw, 6.5rem); /* Adjusted size for tablets */
+    font-size: clamp(3rem, 6vw, 6.5rem); /* Adjusted size for tablets */
   }
 }
 
 @media (max-width: 480px) {
-  .logo-container {
-    padding: 0 2%; /* Further reduce padding for mobiles */
-  }
-
   .about-heading {
     font-size: clamp(1.8rem, 3vw, 3.5rem); /* Smaller size for mobile */
   }
 
   .agro-tech-heading {
-    font-size: clamp(3rem, 5vw, 5.5rem); /* Smaller size for mobile */
+    font-size: clamp(2.5rem, 5vw, 5.5rem); /* Adjusted size for mobile */
   }
 }
