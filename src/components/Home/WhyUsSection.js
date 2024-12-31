@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { gsap } from "gsap";
 import { useScroll, useTransform, motion } from "framer-motion";
-import backgroundImage from "../../assets/image/farmer.jpeg"; // Replace with the path to your background image
+import backgroundImage from "../../assets/image/farmer.jpeg";
 
 const WhyUsSection = () => {
   const maskRef = useRef(null);
@@ -11,39 +11,43 @@ const WhyUsSection = () => {
   // Use `useScroll` and `useTransform` for the background image and overlay
   const { scrollYProgress } = useScroll({
     target: sectionRef,
-    offset: ['start end', 'start start'],
+    offset: ["start end", "start start"],
   });
 
-  const yTransform = useTransform(scrollYProgress, [0, 1], ['0%', '-20%']); // Parallax effect
+  const yTransform = useTransform(scrollYProgress, [0, 1], ["0%", "-20%"]); // Parallax effect
   const scaleTransform = useTransform(scrollYProgress, [0, 1], [1.2, 1]); // Zoom-out effect
 
   useEffect(() => {
     const updateMaskPosition = (e) => {
-      const x = e.clientX;
-      const y = e.clientY;
+      const x = Math.max(
+        0,
+        Math.min(e.clientX, window.innerWidth - 50) // Keep mask within viewport
+      );
+      const y = Math.max(
+        0,
+        Math.min(e.clientY, window.innerHeight - 50) // Keep mask within viewport
+      );
 
       // Update mask position using GSAP
       gsap.to(maskRef.current, {
-        x: x - 50, // Adjust offset to center the mask
-        y: y - 50,
+        x: x - 25, // Adjust offset to center the mask
+        y: y - 25,
         duration: 0.2,
         ease: "power2.out",
       });
     };
 
-    // Hide the default cursor
-    document.body.style.cursor = "none";
+    document.body.style.cursor = "default";
 
     window.addEventListener("mousemove", updateMaskPosition);
 
     return () => {
-      document.body.style.cursor = ""; // Reset cursor to default on cleanup
+      document.body.style.cursor = "";
       window.removeEventListener("mousemove", updateMaskPosition);
     };
   }, []);
 
   useEffect(() => {
-    // Adjust mask size based on hoveringText state
     gsap.to(maskRef.current, {
       scale: hoveringText ? 7.5 : 1.2,
       duration: 0.3,
@@ -71,7 +75,7 @@ const WhyUsSection = () => {
             backgroundSize: "cover",
             backgroundPosition: "center",
           }}
-          className="absolute inset-0"
+          className="absolute inset-0 max-w-full h-full"
         ></div>
         {/* Black Overlay */}
         <div className="absolute inset-0 bg-black bg-opacity-60"></div>
@@ -89,19 +93,19 @@ const WhyUsSection = () => {
 
       {/* Content */}
       <div
-        className="absolute z-10"
+        className="absolute z-10 px-4 md:px-0"
         onMouseEnter={() => setHoveringText(true)}
         onMouseLeave={() => setHoveringText(false)}
       >
         <h2
-          className="text-4xl md:text-6xl font-extrabold mb-4 max-w-50"
+          className="text-3xl sm:text-4xl md:text-6xl font-extrabold mb-4 max-w-full"
           style={{ fontFamily: "'Merriweather', serif" }}
         >
           WHY FV PLUS <br /> AGROTECH INNOVATION?
         </h2>
-        <div className="w-80 h-1 bg-green-500 mx-auto my-4"></div>
+        <div className="w-32 sm:w-60 md:w-80 h-1 bg-green-500 mx-auto my-4"></div>
         <p
-          className="text-lg md:text-xl text-gray-200"
+          className="text-sm sm:text-lg md:text-xl text-gray-200"
           style={{ fontFamily: "'Merriweather', serif" }}
         >
           OUR WORKS AND OBJECTIVES

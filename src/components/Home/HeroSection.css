@@ -1,6 +1,14 @@
+video {
+  pointer-events: none; /* This ensures the video doesn't block the cursor */
+}
+.overlay {
+  pointer-events: auto; /* Ensures the overlay allows interaction */
+  cursor: default; /* Explicitly set the cursor to visible */
+}
+
 .quote {
   text-align: center;
-  font-size: min(5vw, 60px);
+  font-size: min(4vw, 50px);
   white-space: nowrap;
   margin-top: -80px;
 }
@@ -54,7 +62,7 @@
 }
 
 .quote figcaption {
-    font-size: 1.2rem; /* Reduced size */
+    font-size: 1rem; /* Reduced size */
     line-height: 1.5; /* Adjusted line height for readability */
     margin-top: 10px; /* Spacing above the caption */
     text-align: center; /* Ensure the text stays centered */
@@ -98,5 +106,38 @@
   75%,
   100% {
     clip-path: polygon(35px 100%, 100% 100%, calc(100% - 35px) 200%, 0% 200%);
+  }
+}
+
+/* Responsive Padding for Smaller Screens */
+@media (max-width: 768px) {
+  .quote {
+    padding: 10px 2vw; /* Narrower padding for smaller devices */
+  }
+
+  .quote .cut-text-container {
+    padding: 8px 50px; /* Reduce padding on smaller screens */
+    margin: 10px;
+  }
+  .quote figcaption {
+    font-size: 1rem; /* Reduced size */
+    line-height: 1.5; /* Adjusted line height for readability */
+    margin-top: 10px; /* Spacing above the caption */
+    text-align: center; /* Ensure the text stays centered */
+  }
+}
+
+@media (max-width: 480px) {
+  .quote {
+    padding: 20px 4vw; /* Even smaller padding for very small devices */
+  }
+
+  .quote .cut-text-container {
+    padding: 10px 50px; /* Compact padding for small screens */
+    margin: 2px;
+  }
+
+  .quote figcaption {
+    font-size: 0.7rem; /* Reduce caption size for smaller devices */
   }
 }

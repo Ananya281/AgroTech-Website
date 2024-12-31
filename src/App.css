@@ -7,6 +7,12 @@
   /* pointer-events: none; */
 }
 
+/* App.css or a global CSS file */
+body {
+  cursor: default; /* Reset to default pointer */
+}
+
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

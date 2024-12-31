@@ -10,17 +10,15 @@ const ResearchAreas = () => {
   const [cursorPosition, setCursorPosition] = useState({ x: 0, y: 0 });
 
   const handleMouseMove = (e) => {
+    const rect = e.currentTarget.getBoundingClientRect();
     setCursorPosition({
-      x: e.clientX,
-      y: e.clientY,
+      x: e.clientX - rect.left, // Cursor X position relative to the card
+      y: e.clientY - rect.top, // Cursor Y position relative to the card
     });
   };
 
   return (
-    <section
-      className="relative flex flex-col items-center justify-center text-center py-2 px-6 bg-white mb-[100px] h-[100%]"
-      onMouseMove={handleMouseMove}
-    >
+    <section className="relative flex flex-col items-center justify-center text-center py-2 px-6 bg-white mb-[100px] h-[100%] mt-0">
       {/* Small Heading */}
       <h3
         className="text-sm font-semibold text-gray-500 uppercase tracking-wide mb-4"
@@ -64,13 +62,9 @@ const ResearchAreas = () => {
           {/* Card with Hover Video Effect */}
           <motion.div
             className="relative w-full md:w-1/2 h-[350px] rounded-lg overflow-hidden shadow-lg group"
-            initial={{ opacity: 0.8 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
             onMouseEnter={() => setHoveredCard("guava")}
             onMouseMove={handleMouseMove}
             onMouseLeave={() => setHoveredCard(null)}
-            // style={{ cursor: "none" }} // Hide default cursor only on the card
           >
             {hoveredCard === "guava" ? (
               <video
@@ -88,6 +82,35 @@ const ResearchAreas = () => {
               />
             )}
             <div className="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-70 flex items-center justify-center transition-all"></div>
+
+            {/* Custom Circular Cursor */}
+            {hoveredCard === "guava" && (
+              <motion.div
+                className="absolute w-40 h-40 bg-yellow-400 text-black flex items-center justify-center rounded-full pointer-events-none z-50"
+                style={{
+                  left: `${cursorPosition.x}px`,
+                  top: `${cursorPosition.y}px`,
+                  transform: "translate(-50%, -50%)",
+                }}
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{
+                  scale: 1.2,
+                  opacity: 1,
+                }}
+                exit={{
+                  scale: 0.8,
+                  opacity: 0,
+                  transition: { duration: 0.3 },
+                }}
+                transition={{
+                  type: "spring",
+                  stiffness: 500,
+                  damping: 30,
+                }}
+              >
+                <span className="font-bold text-xs text-center">VIEW DETAILS</span>
+              </motion.div>
+            )}
           </motion.div>
         </div>
 
@@ -120,13 +143,9 @@ const ResearchAreas = () => {
           {/* Card with Hover Video Effect */}
           <motion.div
             className="relative w-full md:w-1/2 h-[350px] rounded-lg overflow-hidden shadow-lg group"
-            initial={{ opacity: 0.8 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5 }}
             onMouseEnter={() => setHoveredCard("iris")}
             onMouseMove={handleMouseMove}
             onMouseLeave={() => setHoveredCard(null)}
-            // style={{ cursor: "none" }} // Hide default cursor only on the card
           >
             {hoveredCard === "iris" ? (
               <video
@@ -144,38 +163,38 @@ const ResearchAreas = () => {
               />
             )}
             <div className="absolute inset-0 bg-black bg-opacity-50 group-hover:bg-opacity-70 flex items-center justify-center transition-all"></div>
+
+            {/* Custom Circular Cursor */}
+            {hoveredCard === "iris" && (
+              <motion.div
+                className="absolute w-40 h-40 bg-yellow-400 text-black flex items-center justify-center rounded-full pointer-events-none z-50"
+                style={{
+                  left: `${cursorPosition.x}px`,
+                  top: `${cursorPosition.y}px`,
+                  transform: "translate(-50%, -50%)",
+                }}
+                initial={{ scale: 0, opacity: 0 }}
+                animate={{
+                  scale: 1.2,
+                  opacity: 1,
+                }}
+                exit={{
+                  scale: 0.8,
+                  opacity: 0,
+                  transition: { duration: 0.3 },
+                }}
+                transition={{
+                  type: "spring",
+                  stiffness: 500,
+                  damping: 30,
+                }}
+              >
+                <span className="font-bold text-xs text-center">VIEW DETAILS</span>
+              </motion.div>
+            )}
           </motion.div>
         </div>
       </div>
-
-      {/* Custom Circular Cursor */}
-      {hoveredCard && (
-        <motion.div
-          className="fixed w-32 h-32 bg-yellow-400 text-black flex items-center justify-center rounded-full pointer-events-none z-50"
-          style={{
-            left: `${cursorPosition.x}px`,
-            top: `${cursorPosition.y}px`,
-            transform: "translate(-50%, -50%)",
-          }}
-          initial={{ scale: 0, opacity: 0 }}
-          animate={{
-            scale: hoveredCard ? 1.2 : 0,
-            opacity: hoveredCard ? 1 : 0,
-          }}
-          transition={{
-            type: "spring",
-            stiffness: 500,
-            damping: 30,
-          }}
-        >
-          <span
-            className="font-bold text-sm text-center"
-            style={{ fontFamily: "'Merriweather', serif" }}
-          >
-            VIEW DETAILS
-          </span>
-        </motion.div>
-      )}
     </section>
   );
 };
