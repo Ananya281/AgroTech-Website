@@ -7,6 +7,7 @@ import ResearchAreas from "../components/Home/ResearchAreas";
 import SolutionsSection from "../components/Home/SolutionsSection";
 import GallerySection from "../components/Home/GallerySection";
 import "../App.css";
+import { FocusCardsDemo } from "../components/Home/gallery";
 
 const Home = () => {
   return (
@@ -28,8 +29,17 @@ const Home = () => {
           <SolutionsSection />
         </Parallax>
         <Parallax speed={15} className="w-full my-0 py-4">
-          <GallerySection />
+{/*           <GallerySection />
+ */} 
+<h3
+  className="text-lg md:text-xl font-semibold text-gray-500 uppercase tracking-wide mb-4 text-center"
+  style={{ fontFamily: "'Merriweather', serif" }}
+>
+  OUR GALLERY
+</h3>
+        <FocusCardsDemo/>
         </Parallax>
+
       </div>
     </ParallaxProvider>
   );
