@@ -13,13 +13,12 @@ import $ from "jquery";
 import "./App.css";
 
 const App = () => {
-  const [showContent, setShowContent] = useState(false); // State to track when to show the website content
+  const [showContent, setShowContent] = useState(false);
 
   useEffect(() => {
     let counter = 0;
     let c = 0;
 
-    // Loader animation logic
     const i = setInterval(() => {
       $(".loading-page .counter h1").html(`${c}%`);
       $(".loading-page .counter hr").css("width", `${c}%`);
@@ -29,16 +28,15 @@ const App = () => {
       if (counter === 101) {
         clearInterval(i);
         $(".loading-page").fadeOut(1000, () => {
-          $("body").css("overflow", "auto"); // Restore scrolling
-          setShowContent(true); // Trigger the display of website content
+          $("body").css("overflow", "auto");
+          setShowContent(true);
         });
       }
-    }, 50); // Adjust duration as needed
+    }, 50);
   }, []);
 
   return (
     <>
-      {/* Loader */}
       <div className="loading-page">
         <div className="counter">
           <h1>0%</h1>
@@ -46,14 +44,10 @@ const App = () => {
         </div>
       </div>
 
-      {/* Main Content with fading animation */}
       {showContent && (
         <div className="fade-in">
           <Router>
-            <Navbar />
             <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/about" element={<About />} />
               <Route
                 path="/products"
                 element={
@@ -62,10 +56,22 @@ const App = () => {
                   </ParallaxProvider>
                 }
               />
-              <Route path="/services" element={<Services />} />
-              <Route path="/research" element={<Research />} />
-              <Route path="/get-involved" element={<GetInvolved />} />
-              <Route path="/contact" element={<Contact />} />
+              <Route
+                path="*"
+                element={
+                  <>
+                    <Navbar />
+                    <Routes>
+                      <Route path="/" element={<Home />} />
+                      <Route path="/about" element={<About />} />
+                      <Route path="/services" element={<Services />} />
+                      <Route path="/research" element={<Research />} />
+                      <Route path="/get-involved" element={<GetInvolved />} />
+                      <Route path="/contact" element={<Contact />} />
+                    </Routes>
+                  </>
+                }
+              />
             </Routes>
           </Router>
         </div>

@@ -4,6 +4,7 @@ import ProductCards from "../components/Products/ProductCards";
 import GuavaProbiSection from "../components/Products/GuavaProbiSection";
 import VarietySection from "../components/Products/VarietySection";
 import IrisSection from "../components/Products/IrisSection";
+import ProductNavbar from "../components/Products/ProductNavbar";
 import "../App.css"; 
 import { HeroParallax } from "../components/Products/hero-parallax";
 import { Carousel, Card } from "../components/Products/cards-carousel";
@@ -98,6 +99,7 @@ const data = [
 const Products = () => {
   return (
     <div className="fade-in">
+          <ProductNavbar />
       <HeroParallax products={productss} />
 {/*       <HeroSection title="Welcome to Our Products" />
  */}      {/* <ProductCards /> */}
