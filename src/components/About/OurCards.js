@@ -1,56 +1,78 @@
-import React, { useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import './style.css'; // Assuming the CSS file is in the same directory
-import image1 from '../../assets/image/a.jpeg'; // Update paths as per your project structure
-import image2 from '../../assets/image/b.jpeg';
-import image3 from '../../assets/image/c.jpeg';
+"use client";
+import { useScroll, useTransform, motion } from "framer-motion";
+import React, { useEffect, useRef, useState } from "react";
 
-const OurCards = () => {
+export const Timeline = ({ data }) => {
+  const ref = useRef(null);
+  const containerRef = useRef(null);
+  const [height, setHeight] = useState(0);
+
+  useEffect(() => {
+    if (ref.current) {
+      const rect = ref.current.getBoundingClientRect();
+      setHeight(rect.height);
+    }
+  }, [ref]);
+
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start 10%", "end 50%"],
+  });
+
+  const heightTransform = useTransform(scrollYProgress, [0, 1], [0, height]);
+  const opacityTransform = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
+
   return (
-    <div className="cards-container bg-gray-50">
-      <Card
-        title="Who We Are"
-        description="FV Plus Agrotech Innovation is a forward-thinking entity dedicated to revolutionizing fresh produce management. As an emerging player in the industry, we’re committed to pioneering innovative and cost-effective technologies for processing fruits and vegetables. Our mission is to tackle food security challenges through cutting-edge solutions."
-        src={image1}
-      />
-      <Card
-        title="What We Do"
-        description="We specialize in developing and applying game-changing solutions that mitigate post-harvest losses. Our core focus lies in leveraging innovative, affordable processing technologies. We aim to significantly increase the shelf life of fruits and vegetables while prioritizing the maintenance of their nutritional quality."
-        src={image2}
-      />
-      <Card
-        title="How We Do It"
-        description="Our approach is centered on innovation and efficiency. We invest in research and development to create pioneering technologies tailored for processing various types of produce. By combining advanced methods with a cost-effective approach, we ensure that our solutions are accessible and impactful."
-        src={image3}
-      />
+    <div
+      className="w-full font-sans md:px-10 bg-gradient-to-b from-green-100 via-green-200 to-green-300 dark:from-green-900 dark:via-green-800 dark:to-green-700"
+      ref={containerRef}
+    >
+      <div className="max-w-7xl mx-auto py-20 px-4 md:px-8 lg:px-10">
+        <h2 className="text-lg md:text-4xl mb-4 text-black dark:text-white max-w-4xl">
+          A deep dive into FV PLUS AGROTECH INNOVATIONS
+        </h2>
+        <p className="text-neutral-700 dark:text-neutral-300 text-sm md:text-base max-w-sm">
+          FV Plus Agrotech Innovation is an emerging player in the field of fresh produce management.
+          We specialize in pioneering and cost-effective technologies for processing fruits and vegetables.
+          Our solutions aim to tackle food security challenges and promote sustainable agricultural practices.
+        </p>
+      </div>
+      <div ref={ref} className="relative max-w-7xl mx-auto pb-20">
+        {data.map((item, index) => (
+          <div key={index} className="flex justify-start pt-10 md:pt-40 md:gap-10">
+            <div className="sticky flex flex-col md:flex-row z-40 items-center top-40 self-start max-w-xs lg:max-w-sm md:w-full">
+              <div className="h-10 absolute left-3 md:left-3 w-10 rounded-full bg-white dark:bg-black flex items-center justify-center">
+                <div className="h-4 w-4 rounded-full bg-neutral-500 dark:bg-neutral-600 border border-neutral-400 dark:border-neutral-500 p-2" />
+              </div>
+              <h3 className="hidden md:block text-xl md:pl-20 md:text-5xl font-bold text-neutral-600 dark:text-neutral-400">
+                {item.title}
+              </h3>
+            </div>
+
+            <div className="relative pl-20 pr-4 md:pl-4 w-full">
+              <h3 className="md:hidden block text-2xl mb-4 text-left font-bold text-neutral-600 dark:text-neutral-400">
+                {item.title}
+              </h3>
+              {item.content}{" "}
+            </div>
+          </div>
+        ))}
+        {/* Tracer Beam */}
+        <div
+          style={{
+            height: height + "px",
+          }}
+          className="absolute md:left-8 left-8 top-0 overflow-hidden w-[2px] bg-[linear-gradient(to_bottom,var(--tw-gradient-stops))] from-transparent from-[0%] via-neutral-400 dark:via-neutral-600 to-transparent to-[99%] [mask-image:linear-gradient(to_bottom,transparent_0%,black_10%,black_90%,transparent_100%)]"
+        >
+          <motion.div
+            style={{
+              height: heightTransform,
+              opacity: opacityTransform,
+            }}
+            className="absolute inset-x-0 top-0 w-[2px] bg-gradient-to-t from-green-700 via-green-500 to-transparent from-[0%] via-[10%] rounded-full"
+          />
+        </div>
+      </div>
     </div>
   );
 };
-
-const Card = ({ title, description, src }) => {
-  const cardRef = useRef(null);
-
-  // Use `useScroll` and `useTransform` for individual card
-  const { scrollYProgress } = useScroll({
-    target: cardRef,
-    offset: ['start end', 'start start'],
-  });
-
-  const yTransform = useTransform(scrollYProgress, [0, 1], [50, 0]); // Parallax effect for vertical movement
-  const scaleTransform = useTransform(scrollYProgress, [0, 1], [1.5, 1]); // Zoom-out effect for the image
-
-  return (
-    <motion.div ref={cardRef} style={{ y: yTransform }} className="card-wrapper">
-      <h3 className="card-title">{title}</h3>
-      <p className="card-description">{description}</p>
-      <motion.div
-        style={{ scale: scaleTransform }}
-        className="card-image-wrapper"
-      >
-        <img src={src} alt={title} className="card-image" />
-      </motion.div>
-    </motion.div>
-  );
-};
-
-export default OurCards;

@@ -2,8 +2,8 @@ import React from "react";
 import HeroSection from "../components/About/HeroSection";
 import RunningText from "../components/About/RunningText";
 import OurMission from "../components/About/OurMission";
-import OurCards from "../components/About/OurCards";
-import "../App.css"; // Assuming fade-in styles are in App.css
+import { TimelineDemo } from "../components/About/timeline";
+import "../App.css";
 
 const About = () => {
   return (
@@ -11,7 +11,7 @@ const About = () => {
       <HeroSection />
       <RunningText />
       <OurMission />
-      <OurCards />
+      <TimelineDemo/>
     </div>
   );
 };
